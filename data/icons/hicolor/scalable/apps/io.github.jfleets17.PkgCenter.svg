@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="carton" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#62a0ea"/>
+      <stop offset="1" stop-color="#1c71d8"/>
+    </linearGradient>
+  </defs>
+  <!-- carton body -->
+  <path d="M20 52 h88 v54 a8 8 0 0 1 -8 8 H28 a8 8 0 0 1 -8 -8 Z" fill="url(#carton)"/>
+  <!-- lid slab, overhanging the body on both sides -->
+  <rect x="12" y="28" width="104" height="26" rx="5" fill="#1a5fb4"/>
+  <!-- packing tape, running over the lid and down the front -->
+  <path d="M56 28 h16 v86 h-16 Z" fill="#99c1f1"/>
+  <!-- lid seam, so the tape does not read as one flat band -->
+  <path d="M56 54 h16" stroke="#1a5fb4" stroke-width="3" stroke-linecap="butt"/>
+</svg>

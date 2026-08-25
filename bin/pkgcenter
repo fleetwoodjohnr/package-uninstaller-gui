@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Terminal entry point. Runs the checkout this script lives in, on the system
+# Python -- the GTK4/libadwaita bindings come from there, not from a venv.
+#
+# readlink -f, not dirname alone: install.sh symlinks this into ~/.local/bin,
+# and BASH_SOURCE then names the symlink rather than the checkout.
+SELF="$(readlink -f "${BASH_SOURCE[0]}")"
+exec /usr/bin/python3 "$(dirname "$(dirname "$SELF")")/main.py" "$@"

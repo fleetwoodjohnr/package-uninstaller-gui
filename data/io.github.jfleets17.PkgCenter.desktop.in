@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Package Center
+GenericName=Package Manager
+Comment=Manage installed packages, Flatpak apps, and sandbox permissions
+Exec=/usr/bin/python3 @SRC_DIR@/main.py
+TryExec=@SRC_DIR@/bin/pkgcenter
+Path=@SRC_DIR@
+Icon=io.github.jfleets17.PkgCenter
+Terminal=false
+Categories=System;PackageManager;
+Keywords=package;uninstall;flatpak;permissions;sandbox;dnf;rpm;
+StartupNotify=true

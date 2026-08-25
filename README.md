@@ -5,7 +5,26 @@ machine: RPM packages, Flatpak apps, Flatpak sandbox permissions, and
 user-level developer tooling — replacing the usual juggling of `dnf`,
 `flatpak`, GNOME Software, and Flatseal.
 
-## Running
+## Install
+
+```bash
+./install.sh
+```
+
+Then launch **Package Center** from the app grid (or the dash, once pinned),
+or run `pkgcenter` from a terminal.
+
+The installer drops a desktop entry in `~/.local/share/applications`, the app
+icon in `~/.local/share/icons/hicolor`, and a `pkgcenter` launcher in
+`~/.local/bin` — all pointing back at this checkout, which stays where it is.
+Edits to the source take effect on the next launch; **moving or renaming the
+checkout means re-running `./install.sh`**. To remove the launcher again:
+
+```bash
+./install.sh --uninstall
+```
+
+During development you can still run it straight from the checkout:
 
 ```bash
 python3 main.py
@@ -13,7 +32,9 @@ python3 main.py
 
 No virtualenv and no `pip install` step. The app uses the system Python's
 PyGObject bindings (GTK 4 + libadwaita), which are already present on
-Fedora Workstation; a plain venv would hide them.
+Fedora Workstation; a plain venv would hide them — which is why the desktop
+entry names `/usr/bin/python3` explicitly rather than whatever `python3` the
+session PATH resolves to.
 
 ## What it does
 
@@ -93,6 +114,11 @@ stock Fedora Workstation both `fedora` and `flathub` are system-scope, so a
 
 ```
 main.py                     launcher
+install.sh                  installs/removes the desktop entry, icon, launcher
+bin/pkgcenter               terminal entry point
+data/
+  *.desktop.in              desktop entry template (@SRC_DIR@ filled at install)
+  icons/                    app icon, installed into hicolor
 pkgcenter/
   app.py, window.py         Adw.Application and the main window
   models.py                 dataclasses shared across layers
